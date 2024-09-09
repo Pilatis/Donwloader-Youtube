@@ -19,7 +19,7 @@ ele diz ao Flask que, quando um cliente faz uma solicitação para essa URL, a f
 
 @app.route("/")
 def index():
-    return render_template("index.htm")
+    return render_template("index.html")
 
 
 @app.route("/download", methods=['POST'])
