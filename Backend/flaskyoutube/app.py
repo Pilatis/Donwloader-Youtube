@@ -1,6 +1,6 @@
 import yt_dlp as yt
 import os
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, Response
 
 app = Flask(__name__)
 
@@ -31,13 +31,18 @@ def download_video():
     # criar um diretório caso ele não exista
     if not os.path.exists(download_dir):
         os.makedirs(download_dir)
-    try:
-        with yt.YoutubeDL(ydl_opts) as ydl:
-            ydl.download([video_url])
-        return jsonify({'message': 'vídeo baixado com sucesso!'})
-    except Exception as erro:
-        # O código 400 é um código de status HTTP que indica "Bad Request" (Solicitação Inválida).
-        return jsonify({'error': str(erro)}), 400
+
+    def generate():
+        try:
+            yield "Baixando vídeo...\n"
+            with yt.YoutubeDL(ydl_opts) as ydl:
+                ydl.download([video_url])
+            yield "Vídeo baixado com sucesso!\n"
+        except Exception as erro:
+            # O código 400 é um código de status HTTP que indica "BRequest" (Solicitação Inválida).
+            yield f"Erro ao baixar o vídeo: {str(erro)}\n"
+
+        return Response(generate(), mimetype='text/plain')
 
 
 if __name__ == "__main__":
