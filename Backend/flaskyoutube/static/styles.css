@@ -75,3 +75,14 @@ label, input, button {
 .input-form:hover {
     opacity: 0.8
 }
+
+.feedback-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    padding: 6px;
+    border: none;
+    background-color: rgb(77, 77, 171);
+    color: white;
+}
