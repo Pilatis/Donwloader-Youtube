@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../static/styles.css" />
-</head>
-
-<body>
-    <main class="main-container">
-        <div class="form-container">
-            <h1>Downloader Video</h1>
-            <div class="box-form">
-                <form id="download-form" action="/download" method="POST">
-                    <label class="label-form" for="url">Insira a url do video</label>
-                    <input class="input-form" type="text" id="url" name="url"
-                        placeholder="EX: https://www.youtube.com/watch?">
-                    <button type="submit" class="button-form">Buscar</button>
-                </form>
+    </head>
+    
+    <body>
+        <main class="main-container">
+            <div class="form-container">
+                <h1>Downloader Video</h1>
+                <div class="box-form">
+                    <form id="download-form" action="/download" method="POST">
+                        <label class="label-form" for="url">Insira a url do video</label>
+                        <input class="input-form" type="text" id="url" name="url"
+                            placeholder="EX: https://www.youtube.com/watch?">
+                        <button type="submit" class="button-form">Buscar</button>
+                    </form>
+                </div>
+                <div id="feedback" class="feedback-container"></div>
             </div>
-            <div id="feedback" class="feedback-container"></div>
-        </div>
     </main>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
