@@ -24,11 +24,6 @@ def index():
 def download_video():
     # pega a url do corpo da solicitação
     video_url = request.form.get("url")
-    # junta de forma correta o caminho para o arquivo
-    ydl_opts = {
-        "outtmpl": os.path.join(download_dir, "%(title)s.%(ext)s"),
-        "format": "best",
-    }
     # criar um diretório caso ele não exista
     if not os.path.exists(download_dir):
         os.makedirs(download_dir)
