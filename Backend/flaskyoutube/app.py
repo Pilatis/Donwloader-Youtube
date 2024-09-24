@@ -5,6 +5,9 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 download_dir = "downloads"
 ydl_opts = {
+    'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    "cookiefile": "coookies.txt",
+    "headers"
     "outtmpl": os.path.join(download_dir, "%(title)s.%(ext)s"),
     "format": "best",
 }
